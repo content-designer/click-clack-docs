@@ -1,0 +1,56 @@
+---
+title: "What a receipt proves"
+description: "A valid export is internally consistent, signed, and bound to the included manuscript. It is not operator-independent non-repudiation, and it is not a detector."
+---
+
+Say what the file proved. Do not upgrade the claim because the news is good.
+
+## When `click-clack-verify` exits 0
+
+The current v3 format proves that the export is:
+
+- internally consistent
+- signed
+- bound to the included manuscript
+
+It additionally binds:
+
+- every new Figment proposal to its exact admitted model and original source passage
+- every accepted contribution to a workspace-scoped deciding-writer identifier
+- an opted-in native paste to the exact text that arrived with `source=paste`
+
+Legacy v2 exports remain readable. They are never backfilled with evidence that was not recorded.
+
+## What it does not prove
+
+<AccordionGroup>
+  <Accordion title="It is not operator-independent non-repudiation">
+    The summary field `operatorIndependentNonRepudiation` is always `false`. A valid signature is tamper evidence from Click Clack’s server. It does not prove that a party other than the operator produced the record, and it does not prove a key the writer alone holds.
+  </Accordion>
+  <Accordion title="A paste is a paste">
+    A paste record proves the paste action only. It does not prove authorship, whether AI was involved, or where the text originated.
+  </Accordion>
+  <Accordion title="Keeping the original is unsigned">
+    **Keep original** is the writer staying with their own words. That decision is not a signed contribution of the kept text.
+  </Accordion>
+  <Accordion title="In-app “Signed” is not the independent check">
+    Activity can show that Click Clack verified a signature. A publisher should still run `click-clack-verify` on the downloaded file. Do not treat a screenshot of the studio as the check.
+  </Accordion>
+  <Accordion title="A development key proves the math, not the operator">
+    Some deployments sign under a published development key. Those signatures verify, and prove nothing about who made them.
+  </Accordion>
+</AccordionGroup>
+
+## Do not say “trusted”
+
+A passing check is **verified**, not “trusted”. Trust is a relationship. Verification is a procedure with an exit status. Click Clack never uses colour alone for that procedure: the product pairs an icon with a label, and this checker pairs a file with a process.
+
+Detectors guess — they have documented false-positive rates, and some have been retired by the labs that shipped them. A receipt is a different kind of object. It does not guess whether a passage “looks like” a model. It checks whether the signed history in the file still holds.
+
+## Continuity
+
+Comparing a later export with a receipt you retained can prove that the history has not contradicted that receipt. Use `--expect-continues`. Neither v2 nor v3 provides operator-independent non-repudiation, with or without that comparison.
+
+## Figments, not “the AI”
+
+In customer-facing language a collaborator is a **Figment**, with a name and a job. Do not collapse the roster into a generic “the AI”. The receipt names who proposed what.

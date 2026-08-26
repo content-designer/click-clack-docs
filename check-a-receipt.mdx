@@ -1,0 +1,80 @@
+---
+title: "Check a receipt"
+description: "Verify a Click Clack signed history on your own machine. You do not need the app, an account, or a network connection for the ordinary check."
+---
+
+You were handed a JSON file — a Click Clack **signed history**. This page is how you check it without asking Click Clack to vouch for itself.
+
+You need [Node.js 22](https://nodejs.org/) or newer. The checker never contacts Click Clack.
+
+## Install the checker
+
+The independent checker is Apache-2.0. It is a small program, not the writing studio.
+
+```bash
+npm install --global @click-clack/provenance-verifier
+```
+
+That puts `click-clack-verify` on your `PATH`. Running it with no arguments prints usage and exits `2` — that is enough to confirm the command is installed.
+
+## Run it
+
+```bash
+click-clack-verify export.json
+```
+
+Replace `export.json` with the file you were given.
+
+<Steps>
+  <Step title="Read the exit status">
+    `0` means the proof is valid. `1` means the proof failed. `2` means the file could not be read as a Click Clack export.
+  </Step>
+  <Step title="Read the JSON line">
+    A valid run prints a summary object. `valid` is `true`. `operatorIndependentNonRepudiation` is always `false` — that field is not a score, it is a limit.
+  </Step>
+  <Step title="Match it to the manuscript">
+    The export carries the draft it is about. `boundToManuscript` is `true` when the signed checkpoint is bound to that text. If the writer typed after the last signed contribution, `headDescribesManuscript` can be `false`. That is ordinary, not a failure.
+  </Step>
+</Steps>
+
+## Compare with an earlier receipt
+
+If you kept a previous export, you can ask whether this one continues that one without contradicting it:
+
+```bash
+click-clack-verify current.json --expect-continues earlier.json
+```
+
+A valid continuation still has exit status `0`. The summary then includes `continuesEarlier`, how many events the earlier file had, and how many were appended since.
+
+## Pin a workspace fingerprint
+
+If you already know the workspace fingerprint from a receipt you accepted, refuse a file that does not match:
+
+```bash
+click-clack-verify export.json --expect-workspace-fingerprint <64-lowercase-hex-characters>
+```
+
+## Machine-readable output
+
+`--json` adds an explicit `capabilities` object describing what this checker version can prove. Use it when you are recording the result rather than reading it.
+
+```bash
+click-clack-verify export.json --json
+```
+
+## Library use
+
+```js
+import { verifyExport } from '@click-clack/provenance-verifier';
+
+const result = verifyExport('export.json', {
+  earlierExportFile: 'earlier.json',
+});
+```
+
+The package ships fictional, deterministically signed fixtures. Tampered fixtures are expected to fail — they are how you confirm you are running a real checker.
+
+<Warning>
+  A page in Click Clack that says **Signed** is Click Clack reporting on its own signature. It is not the independent check. For that, run `click-clack-verify` on the downloaded file.
+</Warning>

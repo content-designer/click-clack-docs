@@ -1,0 +1,35 @@
+---
+title: "Timestamps"
+description: "Optional OpenTimestamps evidence is an extra check, not the ordinary one. A Bitcoin attestation is an upper time bound after you verify it against a chain you chose."
+---
+
+Ordinary verification is offline and does not need a timestamp. Some v3 exports also carry OpenTimestamps evidence. Treat that as optional, and treat a `confirmed` label in the file as a claim until you check it yourself.
+
+## What the extra evidence is
+
+Optional v3 OpenTimestamps evidence is checked for an exact detached-digest binding to the signed checkpoint. That answers “is this timestamp object about this checkpoint?”, not “does the world’s Bitcoin chain agree?”.
+
+A Bitcoin attestation is only an **upper time bound** after independent best-chain verification. Its presence in the file, and a server `confirmed` label, are not authority.
+
+## Require a Bitcoin check
+
+To verify against an explicitly selected Bitcoin Core node:
+
+```bash
+click-clack-verify export.json \
+  --require-timestamp \
+  --bitcoin-rpc-url <url> \
+  --bitcoin-cookie-file <path>
+```
+
+`--require-timestamp` and the Bitcoin Core flags travel together. The checker will not invent a public block explorer if you omit them.
+
+<Warning>
+  Credentials belong in the cookie file, never in the URL or in command arguments. HTTP is accepted only for loopback. Other Bitcoin Core URLs must use HTTPS. The verifier never falls back to public block explorers.
+</Warning>
+
+## Reading timestamp fields
+
+Without Bitcoin Core, a structurally present proof reports as pending or structurally complete. `confirmationVerified` stays `false` until the configured authority says otherwise. Do not describe that as confirmed.
+
+If you need the date not to rest on Click Clack’s word, run the Bitcoin Core check. If you do not run it, say you did not.

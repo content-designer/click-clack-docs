@@ -1,0 +1,68 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "maple",
+  "name": "Click Clack",
+  "description": "How to check a Click Clack provenance receipt without the app or an account.",
+  "colors": {
+    "primary": "#2E5AA7",
+    "light": "#9EB9FF",
+    "dark": "#9EB9FF"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Receipts",
+        "groups": [
+          {
+            "group": "Start here",
+            "pages": [
+              "index",
+              "check-a-receipt",
+              "export-signed-history"
+            ]
+          },
+          {
+            "group": "Read a result",
+            "pages": [
+              "what-it-proves",
+              "timestamps"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Studio",
+        "href": "https://clickclack.studio"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Open Click Clack",
+      "href": "https://clickclack.studio"
+    }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "mcp",
+      "cursor"
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/content-designer/click-clack-docs"
+    }
+  }
+}

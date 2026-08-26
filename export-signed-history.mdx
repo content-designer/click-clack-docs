@@ -1,0 +1,45 @@
+---
+title: "Export signed history"
+description: "How a writer downloads the receipt a publisher can check. Markdown is the manuscript. The JSON file is the proof."
+---
+
+The person who has to check the work does not need a Click Clack account. You do. Your job is to hand them the right file.
+
+## Two downloads, two jobs
+
+| Download | What it is | What it is not |
+|---|---|---|
+| **Download signed history** | A JSON receipt: signed contributions, the manuscript they are bound to, optional timestamp evidence | A substitute for the independent checker |
+| **Download this document as Markdown** | The current prose, for leaving with your words | A provenance receipt |
+
+Hand over the signed history when someone asks what AI did. Hand over Markdown when they want to read the piece. Do not treat the Markdown file as proof.
+
+## Download a signed history
+
+<Steps>
+  <Step title="Open the document">
+    Sign in to [Click Clack](https://clickclack.studio), open the draft, and open **Activity**. Activity is the record, not the chat transcript: one row per contribution, including proposals you turned down.
+  </Step>
+  <Step title="Open a contribution">
+    Select a row. The detail names the contributor, the action, and whether Click Clack could verify the signature. That in-app verdict is Click Clack checking itself. It is useful while you write. It is not what you send a publisher.
+  </Step>
+  <Step title="Download signed history">
+    Use **Download signed history**. Save the JSON file. That is the receipt.
+  </Step>
+</Steps>
+
+If a contribution is labelled unverified, treat that row as unproven. Do not send the file as if it were a passing receipt.
+
+## What the writer sees in Activity
+
+- **Suggested by \<Figment\>** — a named collaborator proposed a change. The chip is a label, not a colour-only status.
+- **You accepted this.** / **You kept the original.** — keeping your own words is unsigned. A declined proposal still stays in the history so the record is not flattering.
+- Paste rows, when you have turned **Record pasted text** on in Settings, record only that text arrived by paste. They do not prove who authored it or whether a model was involved.
+
+## Record pasted text
+
+Settings → Writing → **Record pasted text** is off by default. When it is on, a native paste is saved with a server-held signature. Turn it on before you need those rows, not after. Pastes that happened while it was off are ordinary edits.
+
+## Give the checker to the person who will verify
+
+The independent program is Apache-2.0. Point them at [Check a receipt](/check-a-receipt). They install it on their machine and run it against the JSON file. They should not have to log into Click Clack to finish that job.
