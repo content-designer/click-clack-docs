@@ -1,6 +1,6 @@
 ---
 title: "Export signed history"
-description: "How a writer downloads the receipt a publisher can check. Markdown is the manuscript. The JSON file is the proof."
+description: "How a writer downloads the receipt a publisher can check. Markdown is the manuscript. The JSON file records selected writing activity."
 ---
 
 The person who has to check the work does not need a Click Clack account. You do. Your job is to hand them the right file.
@@ -12,7 +12,7 @@ The person who has to check the work does not need a Click Clack account. You do
 | **Download signed history** | A JSON receipt: signed contributions, the manuscript they are bound to, optional timestamp evidence | A substitute for the independent checker |
 | **Download this document as Markdown** | The current prose, for leaving with your words | A provenance receipt |
 
-Hand over the signed history when someone asks what AI did. Hand over Markdown when they want to read the piece. Do not treat the Markdown file as proof.
+You choose whether to download and share the signed history to help explain your process. Hand over Markdown when they want to read the piece. Do not treat the Markdown file as proof.
 
 ## Download a signed history
 
@@ -34,11 +34,15 @@ If a contribution is labelled unverified, treat that row as unproven. Do not sen
 
 - **Suggested by \<Figment\>** — a named collaborator proposed a change. The chip is a label, not a colour-only status.
 - **You accepted this.** / **You kept the original.** — keeping your own words is unsigned. A declined proposal still stays in the history so the record is not flattering.
-- Paste rows, when you have turned **Record pasted text** on in Settings, record only that text arrived by paste. They do not prove who authored it or whether a model was involved.
+- Recorded paste rows record only that text arrived by paste. They do not prove who authored it or whether a model was involved.
 
 ## Record pasted text
 
-Settings → Writing → **Record pasted text** is off by default. When it is on, a native paste is saved with a server-held signature. Turn it on before you need those rows, not after. Pastes that happened while it was off are ordinary edits.
+Native paste recording is automatic; there is no Settings switch to enable it. Click Clack signs the recorded paste with a server-held key.
+
+Paste coverage is incomplete. When people edit together, shared editing may save the text before its paste event can be recorded. The editor warns when a paste was saved but its event may be missing from the receipt. A later recorded paste does not repair that gap. A receipt without a paste row does not prove that no text was pasted.
+
+Downloading and sharing the receipt is optional. Recording native pastes is not.
 
 ## Give the checker to the person who will verify
 
